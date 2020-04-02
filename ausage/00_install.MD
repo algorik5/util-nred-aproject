@@ -1,11 +1,12 @@
 # 주의
-- nred에서 프로젝트 사용하지 말 것
-- 프로젝트 생성시 각 프로젝트별로 .git가 생성됨 - 즉 flow버젼관리 >>> 프로젝트별로 git repo만들어야 함(맨아래참조)
+- github은 수동으로 사용(수정후 항상 _git_push.bat)
+- (주의)nred에서 프로젝트 사용하지 말 것
+- (주의)프로젝트 생성시 각 프로젝트별로 .git가 생성됨 - 즉 flow버젼관리 >>> 프로젝트별로 git repo만들어야 함(맨아래참조)
 - 
 
 
 # bat
-- _git_init.bat <<< 처음 git 생성시
+- _git_init.bat <<< 처음 git 생성시에만
 - _git_push.bat <<< 수정시
 - _start_nred.bat <<< 실행
 
