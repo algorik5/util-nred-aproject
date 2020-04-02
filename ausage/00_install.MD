@@ -28,6 +28,7 @@
 - === node-red-contrib-natsio 설치 - hello1/node_modules아래에 설치되는군... 흠....
 
 # ============== node-red git project 사용법
+- (참고-동영상) https://www.youtube.com/watch?v=Bto2rz7bY3g
 - 1. github --- repo 생성 (ztest100)
 - 2. nred --- 설정 > Git설정 > ssh키생성(testtest) > pubkey복사
   - github --- settings/deploykeys에 add new,allow write
