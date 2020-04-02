@@ -18,7 +18,7 @@
 
 
 
-# ================================== node-red
+# =============  node-red
 npm install node-red -g <<< node_module아래에 설치됨
 설정 - settings.js < node_module/node-red/settings.js복사 > nred_settings.js 
 	port변경
@@ -26,7 +26,7 @@ npm install node-red -g <<< node_module아래에 설치됨
 	projects/enabled=true
 === node-red-contrib-natsio 설치 - hello1/node_modules아래에 설치되는군... 흠....
 
-# ================================== node-red git project 사용법
+# ============== node-red git project 사용법
 1. github --- repo 생성 (ztest100)
 2. nred --- 설정 > Git설정 > ssh키생성(testtest) > pubkey복사
 	github --- settings/deploykeys에 add new,allow write
