@@ -1,0 +1,111 @@
+[
+    {
+        "id": "2c782e2a.8831a2",
+        "type": "tab",
+        "label": "플로우 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "e36c91ac.87599",
+        "type": "tab",
+        "label": "플로우 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "840bd1c4.04e6e",
+        "type": "inject",
+        "z": "2c782e2a.8831a2",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 120,
+        "y": 120,
+        "wires": [
+            [
+                "66ad615c.3200d"
+            ]
+        ]
+    },
+    {
+        "id": "66ad615c.3200d",
+        "type": "change",
+        "z": "2c782e2a.8831a2",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 120,
+        "wires": [
+            [
+                "6667770a.1d0638"
+            ]
+        ]
+    },
+    {
+        "id": "6667770a.1d0638",
+        "type": "debug",
+        "z": "2c782e2a.8831a2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 600,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "c738708c.9a7e",
+        "type": "inject",
+        "z": "e36c91ac.87599",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 220,
+        "y": 120,
+        "wires": [
+            [
+                "d3628bee.998f18"
+            ]
+        ]
+    },
+    {
+        "id": "d3628bee.998f18",
+        "type": "debug",
+        "z": "e36c91ac.87599",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 270,
+        "y": 220,
+        "wires": []
+    }
+]
