@@ -118,7 +118,8 @@
         "wires": [
             [
                 "be651bbb.5660a8",
-                "ed4bcb64.2ea0f8"
+                "ed4bcb64.2ea0f8",
+                "d7550927.d16718"
             ]
         ]
     },
@@ -165,6 +166,33 @@
         "message": "",
         "x": 680,
         "y": 320,
+        "wires": []
+    },
+    {
+        "id": "d7550927.d16718",
+        "type": "function",
+        "z": "2c782e2a.8831a2",
+        "name": "app",
+        "func": "let no = msg.count%10;\nlet host = \"host-\"+ no;\nlet time = Date.now();\n\n[1,2,3].forEach(k=>{\n    let app = \"app-\"+k;\n    let count = no*k;\n    let avg = no*2*k;\n    let max = no*3*k;\n    let data = {app:app,host:\"host-\"+no,time:time,count:count,avg:avg,max:max};\n    msg.payload = data;\n    node.send(msg);\n});\n\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 420,
+        "wires": [
+            [
+                "fc85a54d.7bc2f8"
+            ]
+        ]
+    },
+    {
+        "id": "fc85a54d.7bc2f8",
+        "type": "natsio-pub",
+        "z": "2c782e2a.8831a2",
+        "server": "85f9fb2.b3c1508",
+        "subject": "test.app",
+        "message": "",
+        "x": 680,
+        "y": 420,
         "wires": []
     }
 ]

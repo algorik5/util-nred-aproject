@@ -144,7 +144,7 @@
         "type": "function",
         "z": "2c782e2a.8831a2",
         "name": "process",
-        "func": "let no = msg.count%10;\nlet host = \"host-\"+ no;\nlet time = Date.now();\nlet cpu = no;\nlet memory = no*2;\n\n[1,2].forEach(k=>{\n    let process = \"process-\"+k;\n    let data = {process:process,host:\"host-\"+no,time:time,cpu:cpu,memory:memory};\n    msg.payload = data;\n    node.send(msg);\n});\n\nreturn null;",
+        "func": "let no = msg.count%10;\nlet host = \"host-\"+ no;\nlet time = Date.now();\n\n[1,2].forEach(k=>{\n    let process = \"process-\"+k;\n    let cpu = no*k;\n    let memory = no*2*k;\n    let data = {process:process,host:\"host-\"+no,time:time,cpu:cpu,memory:memory};\n    msg.payload = data;\n    node.send(msg);\n});\n\nreturn null;",
         "outputs": 1,
         "noerr": 0,
         "x": 480,
