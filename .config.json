@@ -439,6 +439,23 @@
      "file": "D:\\kwak\\kwakNodered\\util-nred-aproject\\node_modules\\node-red-contrib-natsio\\natsio_server.js"
     }
    }
+  },
+  "node-red-contrib-counter": {
+   "name": "node-red-contrib-counter",
+   "version": "0.1.5",
+   "local": false,
+   "nodes": {
+    "counter": {
+     "name": "counter",
+     "types": [
+      "counter"
+     ],
+     "enabled": true,
+     "local": true,
+     "module": "node-red-contrib-counter",
+     "file": "D:\\kwak\\kwakNodered\\util-nred-aproject\\node_modules\\node-red-contrib-counter\\counter.js"
+    }
+   }
   }
  },
  "_credentialSecret": "41e90966ce3a218de799ced5c2c2959ed9d0aa79cc5b78b55546d6be5f4ec5b6",
