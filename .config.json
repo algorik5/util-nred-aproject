@@ -396,7 +396,7 @@
   "node-red-contrib-natsio": {
    "name": "node-red-contrib-natsio",
    "version": "0.6.1",
-   "local": false,
+   "local": true,
    "nodes": {
     "natsio_sub": {
      "name": "natsio_sub",
@@ -443,7 +443,7 @@
   "node-red-contrib-counter": {
    "name": "node-red-contrib-counter",
    "version": "0.1.5",
-   "local": false,
+   "local": true,
    "nodes": {
     "counter": {
      "name": "counter",

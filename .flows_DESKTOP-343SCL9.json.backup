@@ -2,7 +2,7 @@
     {
         "id": "2c782e2a.8831a2",
         "type": "tab",
-        "label": "host",
+        "label": "simul",
         "disabled": false,
         "info": ""
     },
@@ -118,7 +118,8 @@
         "wires": [
             [
                 "be651bbb.5660a8",
-                "ed4bcb64.2ea0f8"
+                "ed4bcb64.2ea0f8",
+                "d7550927.d16718"
             ]
         ]
     },
@@ -126,15 +127,14 @@
         "id": "be651bbb.5660a8",
         "type": "function",
         "z": "2c782e2a.8831a2",
-        "name": "host",
-        "func": "let no = msg.count%10;\nlet host = \"host-\"+ no;\nlet time = Date.now();\nlet cpu = no;\nlet memory = no*2;\nlet data = {host:\"host-\"+no,time:time,cpu:cpu,memory:memory};\nmsg.payload = data;\nreturn msg;\n",
+        "name": "server",
+        "func": "let type=\"server\";\nlet no = msg.count%10;\nlet host = \"host-\"+ no;\nlet time = Date.now();\nlet cpu = no;\nlet memory = no*2;\nlet data = {_type_:type,host:\"host-\"+no,time:time,cpu:cpu,memory:memory};\nmsg.payload = data;\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "x": 470,
         "y": 220,
         "wires": [
             [
-                "6667770a.1d0638",
                 "47dcae80.5cb3f"
             ]
         ]
@@ -144,7 +144,7 @@
         "type": "function",
         "z": "2c782e2a.8831a2",
         "name": "process",
-        "func": "let no = msg.count%10;\nlet host = \"host-\"+ no;\nlet time = Date.now();\n\n[1,2].forEach(k=>{\n    let process = \"process-\"+k;\n    let cpu = no*k;\n    let memory = no*2*k;\n    let data = {process:process,host:\"host-\"+no,time:time,cpu:cpu,memory:memory};\n    msg.payload = data;\n    node.send(msg);\n});\n\nreturn null;",
+        "func": "let type=\"process\";\nlet no = msg.count%10;\nlet host = \"host-\"+ no;\nlet time = Date.now();\n\n[1,2].forEach(k=>{\n    let process = \"process-\"+k;\n    let cpu = no*k;\n    let memory = no*2*k;\n    let data = {_type_:type,process:process,host:\"host-\"+no,time:time,cpu:cpu,memory:memory};\n    msg.payload = data;\n    node.send(msg);\n});\n\nreturn null;",
         "outputs": 1,
         "noerr": 0,
         "x": 480,
@@ -165,6 +165,33 @@
         "message": "",
         "x": 680,
         "y": 320,
+        "wires": []
+    },
+    {
+        "id": "d7550927.d16718",
+        "type": "function",
+        "z": "2c782e2a.8831a2",
+        "name": "app",
+        "func": "let type=\"app\";\nlet no = msg.count%10;\nlet host = \"host-\"+ no;\nlet time = Date.now();\n\n[1,2,3].forEach(k=>{\n    let app = \"app-\"+k;\n    let count = no*k;\n    let avg = no*2*k;\n    let max = no*3*k;\n    let data = {_type_:type,app:app,host:\"host-\"+no,time:time,count:count,avg:avg,max:max};\n    msg.payload = data;\n    node.send(msg);\n});\n\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 470,
+        "y": 420,
+        "wires": [
+            [
+                "fc85a54d.7bc2f8"
+            ]
+        ]
+    },
+    {
+        "id": "fc85a54d.7bc2f8",
+        "type": "natsio-pub",
+        "z": "2c782e2a.8831a2",
+        "server": "85f9fb2.b3c1508",
+        "subject": "test.app",
+        "message": "",
+        "x": 680,
+        "y": 420,
         "wires": []
     }
 ]
