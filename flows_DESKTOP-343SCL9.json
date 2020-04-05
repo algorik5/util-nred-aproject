@@ -96,7 +96,7 @@
         "type": "natsio-pub",
         "z": "2c782e2a.8831a2",
         "server": "85f9fb2.b3c1508",
-        "subject": "test.server",
+        "subject": "test.server.all",
         "message": "",
         "x": 680,
         "y": 220,
@@ -119,7 +119,8 @@
             [
                 "be651bbb.5660a8",
                 "ed4bcb64.2ea0f8",
-                "d7550927.d16718"
+                "d7550927.d16718",
+                "d24c0f11.9004e"
             ]
         ]
     },
@@ -128,14 +129,15 @@
         "type": "function",
         "z": "2c782e2a.8831a2",
         "name": "server",
-        "func": "let type=\"server\";\nlet no = msg.count%10;\nlet host = \"host-\"+ no;\nlet time = Date.now();\nlet cpu = no;\nlet memory = no*2;\nlet data = {_type_:type,host:\"host-\"+no,time:time,cpu:cpu,memory:memory};\nmsg.payload = data;\nreturn msg;\n",
+        "func": "let type=\"server\";\nlet no = msg.count%10;\nlet host = \"host-\"+ no;\nlet time = Date.now();\nlet cpu = no;\nlet memory = no*2;\nlet data = {_type_:type,host:\"host-\"+no,time:time,cpu:cpu,memory:memory};\nmsg.payload = data;\n//msg.payload = JSON.stringify(data);\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
         "x": 470,
         "y": 220,
         "wires": [
             [
-                "47dcae80.5cb3f"
+                "47dcae80.5cb3f",
+                "6667770a.1d0638"
             ]
         ]
     },
@@ -159,6 +161,7 @@
         "id": "1f29d673.5c859a",
         "type": "natsio-pub",
         "z": "2c782e2a.8831a2",
+        "d": true,
         "server": "85f9fb2.b3c1508",
         "subject": "test.process",
         "message": "",
@@ -178,8 +181,7 @@
         "y": 420,
         "wires": [
             [
-                "fc85a54d.7bc2f8",
-                "6667770a.1d0638"
+                "fc85a54d.7bc2f8"
             ]
         ]
     },
@@ -187,11 +189,40 @@
         "id": "fc85a54d.7bc2f8",
         "type": "natsio-pub",
         "z": "2c782e2a.8831a2",
+        "d": true,
         "server": "85f9fb2.b3c1508",
         "subject": "test.app",
         "message": "",
         "x": 680,
         "y": 420,
+        "wires": []
+    },
+    {
+        "id": "d24c0f11.9004e",
+        "type": "function",
+        "z": "2c782e2a.8831a2",
+        "name": "test",
+        "func": "let no = msg.count%10;\nlet host = \"host-\"+ no;\nlet data = {host:\"host-\"+no,no:no};\nmsg.payload = data;\n//msg.payload = JSON.stringify(data);\nreturn msg;\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 450,
+        "y": 140,
+        "wires": [
+            [
+                "53552bbe.7269f4"
+            ]
+        ]
+    },
+    {
+        "id": "53552bbe.7269f4",
+        "type": "natsio-pub",
+        "z": "2c782e2a.8831a2",
+        "d": true,
+        "server": "85f9fb2.b3c1508",
+        "subject": "test.1.mytype",
+        "message": "",
+        "x": 660,
+        "y": 140,
         "wires": []
     }
 ]
