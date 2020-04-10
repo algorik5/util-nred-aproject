@@ -15,19 +15,22 @@
 # clone
 - git clone https://github.com/algorik5/util-nred-aproject.git
 - cd util-nred-aproject
+- npm install
 - _start_nred.bat
+- (주의-고객사) _git_init.bat,_git_push.bat 삭제
 
 
 
-# =============  node-red
+# ============= (참고) node-red 시작하기
 - npm install node-red -g <<< node_module아래에 설치됨
 - 설정 - settings.js < node_module/node-red/settings.js복사 > nred_settings.js 
   - port변경
   - flowFilePretty: true
+  - flowFile: 'flows.json'
   - projects/enabled=true
 - === node-red-contrib-natsio 설치 - hello1/node_modules아래에 설치되는군... 흠....
 
-# ============== node-red git project 사용법
+# ============== (참고) node-red git project 사용법
 - (참고-동영상) https://www.youtube.com/watch?v=Bto2rz7bY3g
 - 1. github --- repo 생성 (ztest100)
 - 2. nred --- 설정 > Git설정 > ssh키생성(testtest) > pubkey복사
