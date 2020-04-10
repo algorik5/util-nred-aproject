@@ -17,7 +17,7 @@
 - cd util-nred-aproject
 - npm install
 - _start_nred.bat
-- (주의-고객사) _git_init.bat,_git_push.bat 삭제
+- (주의-고객사) 1).git삭제 2)_git_init.bat 3)_git_push.bat 삭제
 
 
 
