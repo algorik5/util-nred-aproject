@@ -26,3 +26,6 @@
 - 4. 소스수정
   - 프로젝트이력 > 스테이징 > 커밋 > 커밋이력에서 push
 
+# ============== (주의) language 설정
+- (영어사용하기) 크롬>설정>언어>영어를 맨위로 정렬
+- 또는 (꽁수) node_modules\node-red\node_modules\@node-red\editor-client\locales\ko 삭제
