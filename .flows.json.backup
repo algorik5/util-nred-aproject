@@ -146,7 +146,7 @@
         "type": "function",
         "z": "7d3a3ca8.cbf5c4",
         "name": "process",
-        "func": "let no = msg.count%10;\n\n[1,2].forEach(k=>{\n    let type=\"process\";\n    let time = Date.now();\n    \n    let host = msg.payload.host;\n    let process = \"process-\"+k;\n    let cpu = no*k;\n    let memory = no*2*k;\n    msg.payload = {_type_:type,process:process,host:host,time:time,cpu:cpu,memory:memory};\n    node.send(msg);\n});\n\nreturn null;",
+        "func": "let no = msg.count%10;\n\n[1,2].forEach(k=>{\n    let type=\"process\";\n    let time = Date.now();\n    \n    let host = msg.host;\n    let process = \"process-\"+k;\n    let cpu = no*k;\n    let memory = no*2*k;\n    msg.payload = {_type_:type,process:process,host:host,time:time,cpu:cpu,memory:memory};\n    node.send(msg);\n});\n\nreturn null;",
         "outputs": 1,
         "noerr": 0,
         "x": 760,
