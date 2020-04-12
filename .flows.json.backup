@@ -95,6 +95,7 @@
         "id": "33f7d6a3.d474ea",
         "type": "natsio-pub",
         "z": "7d3a3ca8.cbf5c4",
+        "d": true,
         "server": "954db4be.046838",
         "subject": "test.agent.server",
         "message": "",
@@ -117,7 +118,6 @@
         "y": 320,
         "wires": [
             [
-                "cb47e1dd.7609f",
                 "3205765f.98e8ea",
                 "553bd906.b205b8"
             ]
@@ -137,7 +137,8 @@
             [
                 "33f7d6a3.d474ea",
                 "ba3a8c7e.d101b",
-                "201bcb22.bf0034"
+                "201bcb22.bf0034",
+                "cb47e1dd.7609f"
             ]
         ]
     },
@@ -146,7 +147,7 @@
         "type": "function",
         "z": "7d3a3ca8.cbf5c4",
         "name": "process",
-        "func": "let no = msg.count%10;\n\n[1,2].forEach(k=>{\n    let type=\"process\";\n    let time = Date.now();\n    \n    let host = msg.host;\n    let process = \"process-\"+k;\n    let cpu = no*k;\n    let memory = no*2*k;\n    msg.payload = {_type_:type,process:process,host:host,time:time,cpu:cpu,memory:memory};\n    node.send(msg);\n});\n\nreturn null;",
+        "func": "let no = msg.count%10;\n\n[1,2].forEach(k=>{\n    let type=\"process\";\n    let time = Date.now();\n    \n    let host = msg.payload.host;\n    let process = \"process-\"+k;\n    let cpu = no*k;\n    let memory = no*2*k;\n    msg.payload = {_type_:type,process:process,host:host,time:time,cpu:cpu,memory:memory};\n    node.send(msg);\n});\n\nreturn null;",
         "outputs": 1,
         "noerr": 0,
         "x": 760,
@@ -161,6 +162,7 @@
         "id": "5fc90e2.b3741f",
         "type": "natsio-pub",
         "z": "7d3a3ca8.cbf5c4",
+        "d": true,
         "server": "954db4be.046838",
         "subject": "test.agent.process",
         "message": "",
@@ -172,12 +174,12 @@
         "id": "cb47e1dd.7609f",
         "type": "function",
         "z": "7d3a3ca8.cbf5c4",
-        "name": "app",
-        "func": "let type=\"app\";\nlet no = msg.count%10;\nlet host = \"host-\"+ no;\nlet time = Date.now();\n\n[1,2,3].forEach(k=>{\n    let app = \"app-\"+k;\n    let count = no*k;\n    let avg = no*2*k;\n    let max = no*3*k;\n    let data = {_type_:type,app:app,host:\"host-\"+no,time:time,count:count,avg:avg,max:max};\n    msg.payload = data;\n    node.send(msg);\n});\n\nreturn null;",
+        "name": "appstatus",
+        "func": "let no = msg.count%10;\n\n[1,2].forEach(i=>{\n    let type=\"appstatus\";\n    let time = Date.now();\n    \n    let host = msg.payload.host;\n    let k = i;\n    let app = \"app-\"+k;\n    let gap_tot = no*k++; let gap_rcv = no*k++; let gap_srt = no*k++; let gap_err = no*k++;\n    let tot_tot = no*k; let tot_rcv = no*k; let tot_srt = no*k; let tot_err = no*k;\n    k = i+2;\n    let etc_queue = no*k;    \n    msg.payload = {_type_:type,app:app,host:host,time:time\n        ,gap_tot:gap_tot,gap_rcv:gap_rcv,gap_srt:gap_srt,gap_err:gap_err\n        ,tot_tot:tot_tot,tot_rcv:tot_rcv,tot_srt:tot_srt,tot_err:tot_err\n        ,etc_queue:etc_queue\n    };\n        \n    node.send(msg);\n});\n\nreturn null;",
         "outputs": 1,
         "noerr": 0,
-        "x": 590,
-        "y": 440,
+        "x": 760,
+        "y": 420,
         "wires": [
             [
                 "d627ee31.63c8d"
@@ -188,12 +190,11 @@
         "id": "d627ee31.63c8d",
         "type": "natsio-pub",
         "z": "7d3a3ca8.cbf5c4",
-        "d": true,
         "server": "954db4be.046838",
         "subject": "test.app.status",
         "message": "",
-        "x": 760,
-        "y": 440,
+        "x": 920,
+        "y": 420,
         "wires": []
     },
     {
